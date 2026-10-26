@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camping 360° | SE3041 Diorama Creation & 360° Object Motion Picture Presentation</title>
+  <meta name="description" content="SE3041: Digital Video Production and Delivery Assignment 01 - Diorama Creation & 360° Object Motion Picture Presentation. BSc (Hons) in Information Technology Specializing in Interactive Media.">
+  <link rel="stylesheet" href="styles.css?v=6.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏕️</text></svg>">
+</head>
+<body class="dark-theme">
+
+  <!-- Header Navigation (Floating Dark Glass Pill) -->
+  <header>
+    <a href="#" class="brand-logo">
+      <div class="logo-badge">🏕️</div>
+      Camping <span>360°</span>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="#overview" class="active">Home</a></li>
+        <li><a href="#studio">360° Studio</a></li>
+        <li><a href="#promo-storyboard">story board</a></li>
+        <li><a href="#jungle-gallery">Jungle Environment</a></li>
+        <li><a href="#camping-net-gallery">Camping Net</a></li>
+        <li><a href="#lego-jeep-gallery">Lego Jeep 4x4</a></li>
+        <li><a href="#red-jeep-gallery">Red Jeep</a></li>
+        <li><a href="#specs">About Assignment</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#studio" class="btn-lime">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION WITH AERIAL RIVER LEFT OVERLAY & CAMP.MP4 VIDEO RIGHT OVERLAY -->
+    <section class="hero-section" id="overview">
+      <!-- Left Aerial River Image Background Overlay -->
+      <div class="hero-left-bg">
+        <div class="left-dark-overlay"></div>
+      </div>
+
+      <!-- Right Camp Video Background Overlay -->
+      <div class="hero-forest-bg">
+        <video autoplay loop muted playsinline class="hero-bg-video">
+          <source src="Camp.mp4" type="video/mp4">
+        </video>
+        <div class="video-dark-overlay"></div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-tag">
+            SE3041: DIGITAL VIDEO PRODUCTION & DELIVERY | ASSIGNMENT 01
+          </div>
+
+          <h1 class="hero-title">
+            Diorama <span class="highlight-green">Creation</span>,<br>
+            Save <span class="highlight-green">360° Motion</span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            BSc (Hons) in Information Technology Specializing in Interactive Media.<br>
+            Year 3, Semester 2, 2026. Interactive 360° object motion picture presentation deck.
+          </p>
+
+          <!-- Interactive Action Row -->
+          <div class="hero-action-row">
+            <div class="email-input-group">
+              <input type="text" placeholder="SE3041 Interactive Media Project" readonly>
+              <button class="btn-olive" id="btnSelectLegoHero">Launch 360° →</button>
+            </div>
+          </div>
+
+
+
+          <!-- Bottom 4 Stat Cards Row -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h3>360°</h3>
+              <p>Full Turntable View</p>
+            </div>
+            <div class="stat-card">
+              <h3>60 FPS</h3>
+              <p>Smooth Physics Lerp</p>
+            </div>
+            <div class="stat-card">
+              <h3>1080p</h3>
+              <p>HD Crisp Canvas</p>
+            </div>
+            <div class="stat-card">
+              <h3>100%</h3>
+              <p>Interactive Media</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- OUR MISSION SECTION -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-header">
+          <h2 class="section-heading">We're Building a <span class="highlight-green">Greener, Cleaner,</span> Interactive World.</h2>
+          <p class="section-paragraph">Through education, action, and digital video innovation, we empower interactive media applications to present 360° motion picture objects with spatial clarity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 360° TURNTABLE STUDIO SECTION -->
+    <section class="studio-section" id="studio">
+      <div class="container">
+        <div class="studio-card">
+          
+          <!-- Top HUD Header Bar -->
+          <div class="studio-hud-top">
+            <div class="hud-info">
+              <div class="hud-pill">
+                OBJECT: <strong id="currentModelBadge" style="color: var(--accent-lime);">LEGO MINIFIGURE 360°</strong>
+              </div>
+              <div class="hud-pill">
+                ANGLE: <span class="hud-angle" id="angleReadout">0°</span>
+              </div>
+              <div class="hud-pill">
+                FPS: <strong id="fpsReadout">60</strong>
+              </div>
+            </div>
+
+            <!-- Model Switcher & Fullscreen Toolbar -->
+            <div class="hud-controls-top">
+              <div class="pill-select">
+                <button class="pill-option active" data-model="diorama">🌿 Environment 3D 360°</button>
+                <button class="pill-option" data-model="lego">🧱 Lego Minifigure 360°</button>
+                <button class="pill-option" data-model="jeep1">🚙 Lego Jeep 4x4</button>
+                <button class="pill-option" data-model="jeep2">🛞 Red Trail Jeep</button>
+              </div>
+              <button class="hud-btn active" id="btnFullscreenToggle">
+                ⛶ Fullscreen Studio
+              </button>
+              <button class="hud-btn" id="btnToggleHotspots">
+                📍 Hotspots: ON
+              </button>
+            </div>
+          </div>
+
+          <!-- 360 Viewport Container -->
+          <div class="viewport-container" id="viewportContainer">
+            <!-- Lego Minifigure 360 Video Element -->
+            <video id="legoVideo" src="Lego_minifigure.mp4" preload="auto" loop muted playsinline style="display:none;"></video>
+            <!-- Diorama 360 Video Element -->
+            <video id="dioramaVideo" src="Environment_3D.mp4?v=2.0" preload="auto" loop muted playsinline style="display:none;"></video>
+            <!-- Lego Jeep 4x4 360 Video Element -->
+            <video id="jeep1Video" src="jeep1.mp4" preload="auto" loop muted playsinline style="display:none;"></video>
+            <!-- Red Trail Jeep 360 Video Element -->
+            <video id="jeep2Video" src="jeep2.mp4" preload="auto" loop muted playsinline style="display:none;"></video>
+
+            <!-- Main Interactive Canvas -->
+            <canvas id="object360Canvas" width="1920" height="1080"></canvas>
+
+            <!-- Turntable Animated Grid Graphic -->
+            <div class="turntable-grid"></div>
+
+            <!-- Drag Instruction Hint Overlay -->
+            <div class="drag-hint" id="dragHint">
+              <div class="drag-icon">👈 👆 👉</div>
+              <span>DRAG HORIZONTALLY TO ROTATE 360°</span>
+            </div>
+
+            <!-- HOTSPOT 1: Lego Crown / Helmet -->
+            <div class="hotspot-pin" id="hotspot1" style="top: 25%; left: 50%; opacity: 1;"></div>
+            <div class="hotspot-popup" id="popup1" style="top: 10%; left: 55%;">
+              <div class="popup-tag" id="hotspotTag1">Lego Assembly</div>
+              <div class="popup-title" id="hotspotTitle1">Molded Minifigure Helmet</div>
+              <div class="popup-desc" id="hotspotDesc1">Custom injection molded Lego ABS plastic helmet with 360-degree paint details.</div>
+            </div>
+
+            <!-- HOTSPOT 2: Minifigure Torso Print -->
+            <div class="hotspot-pin" id="hotspot2" style="top: 45%; left: 50%; opacity: 1;"></div>
+            <div class="hotspot-popup" id="popup2" style="top: 30%; left: 20%;">
+              <div class="popup-tag" id="hotspotTag2">Print Detail</div>
+              <div class="popup-title" id="hotspotTitle2">Pad-Printed Emblem & Armor</div>
+              <div class="popup-desc" id="hotspotDesc2">Multi-pass UV cured graphic inks displaying front and back character insignia.</div>
+            </div>
+
+            <!-- HOTSPOT 3: Articulated Legs / Base -->
+            <div class="hotspot-pin" id="hotspot3" style="top: 70%; left: 50%; opacity: 1;"></div>
+            <div class="hotspot-popup" id="popup3" style="top: 55%; left: 65%;">
+              <div class="popup-tag" id="hotspotTag3">Articulation</div>
+              <div class="popup-title" id="hotspotTitle3">Dual Leg Hinge Joints</div>
+              <div class="popup-desc" id="hotspotDesc3">Standardized friction snap-fit leg joints designed for full poseability on stud grid.</div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Studio Control Deck -->
+          <div class="studio-controls-bottom">
+            <!-- Scrubber Progress Bar -->
+            <div class="scrubber-wrapper">
+              <button class="play-toggle-btn" id="playPauseBtn" title="Auto Rotate Video">
+                ▶
+              </button>
+              <div class="scrubber-track-container">
+                <div class="scrubber-labels">
+                  <span>0° Front</span>
+                  <span>90° Side Right</span>
+                  <span>180° Back</span>
+                  <span>270° Side Left</span>
+                  <span>360°</span>
+                </div>
+                <input type="range" min="0" max="360" value="0" class="scrubber-input" id="scrubberInput">
+              </div>
+            </div>
+
+            <!-- Control Options Row -->
+            <div class="controls-row">
+              <!-- Select Object Model -->
+              <div class="control-group">
+                <span class="control-label">Object Source:</span>
+                <div class="pill-select">
+                  <button class="pill-option active" data-model="diorama">🌿 Environment 3D 360°</button>
+                  <button class="pill-option" data-model="lego">🧱 Lego Minifigure 360°</button>
+                  <button class="pill-option" data-model="jeep1">🚙 Lego Jeep 4x4</button>
+                  <button class="pill-option" data-model="jeep2">🛞 Red Trail Jeep</button>
+                </div>
+              </div>
+
+              <!-- Lighting Filter Mode -->
+              <div class="control-group">
+                <span class="control-label">Lighting FX:</span>
+                <div class="pill-select">
+                  <button class="pill-option active" data-light="dark">Dark Studio</button>
+                  <button class="pill-option" data-light="neon">Cyber Glow</button>
+                  <button class="pill-option" data-light="sunlight">Clean</button>
+                </div>
+              </div>
+
+              <!-- Speed Controls -->
+              <div class="control-group">
+                <span class="control-label">Playback Speed:</span>
+                <div class="pill-select">
+                  <button class="pill-option" data-speed="0.5">0.5x</button>
+                  <button class="pill-option active" data-speed="1.0">1.0x</button>
+                  <button class="pill-option" data-speed="2.0">2.0x</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMO VIDEO & STORYBOARD CINEMATICS SECTION -->
+    <section class="promo-storyboard-section" id="promo-storyboard">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-title-wrap">
+          <div class="badge-tag" style="margin: 0 auto 16px; width: fit-content;">
+            🎬 DIGITAL VIDEO PRODUCTION & CINEMATIC BLUEPRINT
+          </div>
+          <h2 class="section-title">story board of the promo video</h2>
+          <p class="section-desc">
+            Wilderness Adventure diorama motion picture presentation accompanied by the official 9-shot production story board, camera movement choreography, and VFX compositing specifications.
+          </p>
+        </div>
+
+        <!-- Metric Badges Row -->
+        <div class="storyboard-stats-row">
+          <div class="sb-stat-pill">
+            <span class="sb-stat-icon">⏱️</span>
+            <div>
+              <strong>43 Seconds</strong>
+              <small>Planned Total Runtime</small>
+            </div>
+          </div>
+          <div class="sb-stat-pill">
+            <span class="sb-stat-icon">🎞️</span>
+            <div>
+              <strong>9 Cinematic Shots</strong>
+              <small>Framed Storyboard Panels</small>
+            </div>
+          </div>
+          <div class="sb-stat-pill">
+            <span class="sb-stat-icon">🎥</span>
+            <div>
+              <strong>Dynamic Camera Moves</strong>
+              <small>Tracking, 3/4 Pan & Low Angle</small>
+            </div>
+          </div>
+          <div class="sb-stat-pill">
+            <span class="sb-stat-icon">✨</span>
+            <div>
+              <strong>VFX Compositing Notes</strong>
+              <small>Ripples, Mist, Dust & Embers</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dual Showcase Grid: Video Player on Left, Full Storyboard Poster on Right -->
+        <div class="promo-duo-grid">
+          
+          <!-- Left: Official Promo Video Player -->
+          <div class="promo-video-card">
+            <div class="promo-card-header">
+              <div class="promo-card-title">
+                <span class="film-icon">🎬</span>
+                <h3 class="gallery-card-title" style="margin: 0; font-size: 1.35rem;">Wildness Adventures Promo Video</h3>
+              </div>
+              <span class="promo-quality-badge">1080p Full HD • 34s Official Promo</span>
+            </div>
+
+            <div class="promo-player-wrap">
+              <video id="promoVideoPlayer" controls playsinline preload="metadata" poster="wildness_promo_poster.jpg">
+                <source src="Wildness_Adventures.mp4" type="video/mp4">
+                <source src="Wildness%20Adventures.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+
+            <div class="promo-video-meta">
+              <div class="promo-meta-item">
+                <span class="meta-label">OFFICIAL PROMO VIDEO</span>
+                <h4 style="font-family: var(--font-main); font-size: 1.15rem; color: var(--accent-lime); margin-bottom: 6px;">Wildness Adventures Promo Video</h4>
+                <p>Official promotional video presentation featuring river kayak navigation, rugged waterfall crossings, 4x4 trail expedition, campsite tent pitch, and campfire celebration.</p>
+              </div>
+              <div class="promo-meta-tags">
+                <span class="ptag">🎬 1080p Master</span>
+                <span class="ptag">⏱️ 34s Runtime</span>
+                <span class="ptag">🛶 River Adventure</span>
+                <span class="ptag">🚙 4x4 Trail Crossing</span>
+                <span class="ptag">🏕️ Campsite Dusk</span>
+                <span class="ptag">🔥 Campfire Embers</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Full Master Storyboard Sheet -->
+          <div class="storyboard-master-card">
+            <div class="promo-card-header">
+              <div class="promo-card-title">
+                <span class="film-icon">📋</span>
+                <h3 class="gallery-card-title" style="font-size: 1.4rem; color: var(--accent-lime); margin: 0;">story board</h3>
+              </div>
+              <span class="promo-quality-badge accent">story board of the promo video</span>
+            </div>
+
+            <div class="storyboard-poster-wrap gallery-card" data-gallery="storyboard" data-img-index="0">
+              <img src="storyboard.jpg" alt="story board - story board of the promo video" loading="lazy">
+              <div class="storyboard-poster-overlay">
+                <div class="sb-poster-expand-btn">🔍 Click to Expand story board</div>
+              </div>
+              <div class="gallery-card-badge">story board</div>
+            </div>
+
+            <div class="storyboard-poster-footer">
+              <div class="sb-footer-text">
+                <div class="gallery-card-tag" style="margin-bottom: 4px;">Diorama Storyboard</div>
+                <h3 class="gallery-card-title" style="font-size: 1.4rem; margin-bottom: 6px;">story board</h3>
+                <p class="gallery-card-desc" style="color: var(--accent-lime); font-weight: 700; margin-bottom: 6px;">story board of the promo video</p>
+                <span>Total planned duration: 43 seconds. Includes camera framing, scene cuts & VFX notes.</span>
+              </div>
+              <button class="btn-olive btn-sm sb-lightbox-trigger" data-gallery="storyboard" data-img-index="0">
+                🔍 Zoom In Lightbox
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 9-Shot Breakdown Timeline / Grid -->
+        <div class="storyboard-breakdown-section">
+          <div class="breakdown-header">
+            <div>
+              <span class="sub-badge">SHOT-BY-SHOT BREAKDOWN</span>
+              <h3 class="breakdown-title">Cinematography & Sequence Details</h3>
+            </div>
+            <p class="breakdown-desc">Click any individual shot card to expand in high-definition lightbox.</p>
+          </div>
+
+          <div class="shots-grid">
+            
+            <!-- Shot 1 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="1">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_1.jpg" alt="story board of the promo video - Shot 1: River Adventure" loading="lazy">
+                <div class="shot-duration-pill">5 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 01</span>
+                  <h4 class="shot-title">story board: 1. River Adventure</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Rear tracking shot</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Fade in; cut to 2</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Paddle ripples</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 2 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="2">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_2.jpg" alt="story board of the promo video - Shot 2: Rocky River Crossing" loading="lazy">
+                <div class="shot-duration-pill">4 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 02</span>
+                  <h4 class="shot-title">story board: 2. Rocky River Crossing</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Low wheel close-up</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Cut to 3</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Small water splashes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 3 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="3">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_3.jpg" alt="story board of the promo video - Shot 3: Beside the Waterfall" loading="lazy">
+                <div class="shot-duration-pill">5 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 03</span>
+                  <h4 class="shot-title">story board: 3. Beside the Waterfall</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Three-quarter view; pan</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Dissolve to 4</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Fine waterfall mist</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 4 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="4">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_4.jpg" alt="story board of the promo video - Shot 4: Hidden Stream" loading="lazy">
+                <div class="shot-duration-pill">3 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 04</span>
+                  <h4 class="shot-title">story board: 4. Hidden Stream</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Static close-up</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Cut to 5</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Water highlights</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 5 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="5">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_5.jpg" alt="story board of the promo video - Shot 5: Another Explorer Arrives" loading="lazy">
+                <div class="shot-duration-pill">4 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 05</span>
+                  <h4 class="shot-title">story board: 5. Another Explorer Arrives</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Front tracking shot</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Cut to 6</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Light tyre dust</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 6 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="6">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_6.jpg" alt="story board of the promo video - Shot 6: Tackling the Rough Trail" loading="lazy">
+                <div class="shot-duration-pill">5 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 06</span>
+                  <h4 class="shot-title">story board: 6. Tackling the Rough Trail</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Low side view</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Cut to 7</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Subtle camera shake</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 7 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="7">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_7.jpg" alt="story board of the promo video - Shot 7: Meeting by the Stream" loading="lazy">
+                <div class="shot-duration-pill">5 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 07</span>
+                  <h4 class="shot-title">story board: 7. Meeting by the Stream</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Wide shot</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Dissolve to 8</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Soft waterfall spray</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 8 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="8">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_8.jpg" alt="story board of the promo video - Shot 8: Setting Up Camp" loading="lazy">
+                <div class="shot-duration-pill">5 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 08</span>
+                  <h4 class="shot-title">story board: 8. Setting Up Camp</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Eye-level medium shot</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Dusk dissolve to 9</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Gradual light change</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shot 9 -->
+            <div class="shot-card gallery-card" data-gallery="storyboard" data-img-index="9">
+              <div class="shot-img-wrap">
+                <img src="storyboard_shot_9.jpg" alt="story board of the promo video - Shot 9: Campfire Celebration" loading="lazy">
+                <div class="shot-duration-pill">7 sec</div>
+                <div class="gallery-zoom-hint">🔍 Expand</div>
+              </div>
+              <div class="shot-info">
+                <div class="shot-header-row">
+                  <span class="shot-num-badge">SHOT 09</span>
+                  <h4 class="shot-title">story board: 9. Campfire Celebration</h4>
+                </div>
+                <div class="shot-specs-list">
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Camera:</span>
+                    <span class="spec-v">Wide shot; pull back</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">Transition:</span>
+                    <span class="spec-v">Fade to black</span>
+                  </div>
+                  <div class="shot-spec-row">
+                    <span class="spec-k">VFX:</span>
+                    <span class="spec-v highlight">Fire glow and embers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- JUNGLE CAMPING ENVIRONMENT PHOTO GALLERY SHOWCASE SECTION -->
+    <section class="gallery-section" id="jungle-gallery">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="badge-tag" style="margin: 0 auto 16px; width: fit-content;">
+            DIORAMA MOTION REFERENCE & MACRO DETAIL
+          </div>
+          <h2 class="section-title">jungle camping environment</h2>
+          <p class="section-desc">
+            Physical diorama motion picture reference stills featuring hand-crafted waterfall terrain, moss flora canopy, footbridge, and river kayak.
+          </p>
+        </div>
+
+        <div class="gallery-grid five-cols">
+          <!-- Image 1: Campsite Tent Pitch -->
+          <div class="gallery-card square" data-gallery="jungle" data-img-index="0">
+            <div class="gallery-img-wrap">
+              <img src="jungle_camping_5.jpg" alt="jungle camping environment - Campsite Tent Setup" loading="lazy">
+              <div class="gallery-card-badge">Expedition Tent</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Camp Clearing & Shelter</div>
+              <h3 class="gallery-card-title">jungle camping environment</h3>
+              <p class="gallery-card-desc">Hand-crafted orange mesh ridge tent pitched in the jungle clearing between the waterfall cascade and riverbank.</p>
+            </div>
+          </div>
+
+          <!-- Image 2: Isometric Overview -->
+          <div class="gallery-card square" data-gallery="jungle" data-img-index="1">
+            <div class="gallery-img-wrap">
+              <img src="jungle_camping_1.jpg" alt="jungle camping environment - Isometric Complete Diorama" loading="lazy">
+              <div class="gallery-card-badge">Complete Diorama</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Terrain Architecture</div>
+              <h3 class="gallery-card-title">jungle camping environment</h3>
+              <p class="gallery-card-desc">Multi-tier hand-sculpted terrain featuring waterfall cascades, dense moss vegetation, and explorer kayak.</p>
+            </div>
+          </div>
+
+          <!-- Image 3: Dual Module Architecture -->
+          <div class="gallery-card square" data-gallery="jungle" data-img-index="2">
+            <div class="gallery-img-wrap">
+              <img src="jungle_camping_2.jpg" alt="jungle camping environment - Modular Architecture" loading="lazy">
+              <div class="gallery-card-badge">Modular Dual View</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Modular Construction</div>
+              <h3 class="gallery-card-title">jungle camping environment</h3>
+              <p class="gallery-card-desc">Interlocking dual diorama bookend blocks designed for seamless 360° motion capture continuity.</p>
+            </div>
+          </div>
+
+          <!-- Image 4: Dramatic Ambient Camp Shot -->
+          <div class="gallery-card square" data-gallery="jungle" data-img-index="3">
+            <div class="gallery-img-wrap">
+              <img src="jungle_camping_3.jpg" alt="jungle camping environment - Camp & Waterfall Macro" loading="lazy">
+              <div class="gallery-card-badge">Atmospheric Lighting</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Camp & Rapids Detail</div>
+              <h3 class="gallery-card-title">jungle camping environment</h3>
+              <p class="gallery-card-desc">Studio spotlight highlighting the campsite stool, rope-guided plank bridge, and paddler navigating the river.</p>
+            </div>
+          </div>
+
+          <!-- Image 5: Top-Down Aerial View -->
+          <div class="gallery-card square" data-gallery="jungle" data-img-index="4">
+            <div class="gallery-img-wrap">
+              <img src="jungle_camping_4.jpg" alt="jungle camping environment - Top Down View" loading="lazy">
+              <div class="gallery-card-badge">Bird's-Eye View</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Aerial Riverbed</div>
+              <h3 class="gallery-card-title">jungle camping environment</h3>
+              <p class="gallery-card-desc">Overhead planar view displaying fine river sand banks, stone pebble clusters, and timber footbridge.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CAMPING NET GALLERY SHOWCASE SECTION -->
+    <section class="gallery-section" id="camping-net-gallery">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="badge-tag" style="margin: 0 auto 16px; width: fit-content;">
+            HAND-CRAFTED SCALE MODEL PROP
+          </div>
+          <h2 class="section-title">camping net</h2>
+          <p class="section-desc">
+            Multi-angle reference stills of the hand-crafted orange mesh ridge tent prop engineered for the campsite diorama setting.
+          </p>
+        </div>
+
+        <div class="gallery-grid two-cols">
+          <!-- Image 1: Outdoor Perspective -->
+          <div class="gallery-card square" data-gallery="camping_net" data-img-index="0">
+            <div class="gallery-img-wrap">
+              <img src="camping_net_1.jpg" alt="camping net - Outdoor Perspective" loading="lazy">
+              <div class="gallery-card-badge">Outdoor Perspective</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Macro Field Shot</div>
+              <h3 class="gallery-card-title">camping net</h3>
+              <p class="gallery-card-desc">Hand-crafted orange micro-mesh ridge tent structure with central timber support pole on natural stone ledge.</p>
+            </div>
+          </div>
+
+          <!-- Image 2: Studio 4-Panel Study -->
+          <div class="gallery-card square" data-gallery="camping_net" data-img-index="1">
+            <div class="gallery-img-wrap">
+              <img src="camping_net_2.jpg" alt="camping net - Studio Technical Study" loading="lazy">
+              <div class="gallery-card-badge">Studio Multi-Angle</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Technical 4-View Study</div>
+              <h3 class="gallery-card-title">camping net</h3>
+              <p class="gallery-card-desc">4-panel studio elevation breakdown: front entry opening, rear triangular mesh wall, isometric frame, and fabric macro.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LEGO STYLE JEEP 4 X 4 GALLERY SHOWCASE SECTION -->
+    <section class="gallery-section" id="lego-jeep-gallery">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="badge-tag" style="margin: 0 auto 16px; width: fit-content;">
+            SCALE MODEL MACRO PHOTOGRAPHY
+          </div>
+          <h2 class="section-title">Lego style jeep 4 X 4</h2>
+          <p class="section-desc">
+            High-resolution outdoor macro reference captures of the custom 4x4 Lego-style expedition jeep scale model.
+          </p>
+        </div>
+
+        <div class="gallery-grid three-cols">
+          <!-- Image 1: Front 3/4 Quarter Angle -->
+          <div class="gallery-card landscape" data-gallery="lego" data-img-index="0">
+            <div class="gallery-img-wrap">
+              <img src="lego_jeep_3.jpg" alt="Lego style jeep 4 X 4 - Front 3/4 View" loading="lazy">
+              <div class="gallery-card-badge">Front 3/4 Angle</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Front Fascia & Grille</div>
+              <h3 class="gallery-card-title">Lego style jeep 4 X 4</h3>
+              <p class="gallery-card-desc">Signature tan slotted grille, round headlights, front recovery bumper, and seated explorer minifigure.</p>
+            </div>
+          </div>
+
+          <!-- Image 2: Side Profile -->
+          <div class="gallery-card landscape" data-gallery="lego" data-img-index="1">
+            <div class="gallery-img-wrap">
+              <img src="lego_jeep_2.jpg" alt="Lego style jeep 4 X 4 - Side Profile" loading="lazy">
+              <div class="gallery-card-badge">Side Profile</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Cockpit & Chassis</div>
+              <h3 class="gallery-card-title">Lego style jeep 4 X 4</h3>
+              <p class="gallery-card-desc">Open tubular roll-cage chassis, visible coil-over shock springs, and high-clearance all-terrain mud tires.</p>
+            </div>
+          </div>
+
+          <!-- Image 3: Rear View -->
+          <div class="gallery-card landscape" data-gallery="lego" data-img-index="2">
+            <div class="gallery-img-wrap">
+              <img src="lego_jeep_1.jpg" alt="Lego style jeep 4 X 4 - Rear View" loading="lazy">
+              <div class="gallery-card-badge">Rear Elevation</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Rear Geometry</div>
+              <h3 class="gallery-card-title">Lego style jeep 4 X 4</h3>
+              <p class="gallery-card-desc">Molded rear tailgate, beige bumper, tail lights, and heavy tread tire splatter detailing.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RED JEEP PHOTO GALLERY SHOWCASE SECTION -->
+    <section class="gallery-section" id="red-jeep-gallery">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="badge-tag" style="margin: 0 auto 16px; width: fit-content;">
+            FIELD PHOTOGRAPHY & SCALE MODEL DETAIL
+          </div>
+          <h2 class="section-title">Red Jeep</h2>
+          <p class="section-desc">
+            High-resolution multi-angle macro reference captures of the custom 4x4 Red Trail Jeep off-road scale model.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Image 1: Front Elevation -->
+          <div class="gallery-card" data-gallery="red" data-img-index="0">
+            <div class="gallery-img-wrap">
+              <img src="red_jeep_4.jpg" alt="Red Jeep - Front View" loading="lazy">
+              <div class="gallery-card-badge">Front Elevation</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Front Fascia</div>
+              <h3 class="gallery-card-title">Red Jeep</h3>
+              <p class="gallery-card-desc">Signature vertical slotted grille, front brush guard, round headlights, and solid front axle lift.</p>
+            </div>
+          </div>
+
+          <!-- Image 2: Side Profile (Left) -->
+          <div class="gallery-card" data-gallery="red" data-img-index="1">
+            <div class="gallery-img-wrap">
+              <img src="red_jeep_2.jpg" alt="Red Jeep - Side Profile Left" loading="lazy">
+              <div class="gallery-card-badge">Side Profile (Left)</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Chassis & Cabin</div>
+              <h3 class="gallery-card-title">Red Jeep</h3>
+              <p class="gallery-card-desc">Extreme ground-clearance suspension links, heavy-duty beadlock wheels, and tubular roof rack.</p>
+            </div>
+          </div>
+
+          <!-- Image 3: Side Profile (Right) -->
+          <div class="gallery-card" data-gallery="red" data-img-index="2">
+            <div class="gallery-img-wrap">
+              <img src="red_jeep_3.jpg" alt="Red Jeep - Side Profile Right" loading="lazy">
+              <div class="gallery-card-badge">Side Profile (Right)</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Expedition Spec</div>
+              <h3 class="gallery-card-title">Red Jeep</h3>
+              <p class="gallery-card-desc">Deep-water safari snorkel intake, rugged roof cage, and knobby rock crawler mud tires.</p>
+            </div>
+          </div>
+
+          <!-- Image 4: Rear Elevation -->
+          <div class="gallery-card" data-gallery="red" data-img-index="3">
+            <div class="gallery-img-wrap">
+              <img src="red_jeep_1.jpg" alt="Red Jeep - Rear View" loading="lazy">
+              <div class="gallery-card-badge">Rear Elevation</div>
+              <div class="gallery-zoom-hint">🔍 Expand</div>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-tag">Rear Geometry</div>
+              <h3 class="gallery-card-title">Red Jeep</h3>
+              <p class="gallery-card-desc">Tailgate texture detailing, high departure angle rear bumper, and dual rear axle support links.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL FOR RED JEEP IMAGES -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+      <div class="lightbox-overlay" id="lightboxOverlay"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose" title="Close Lightbox">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" title="Previous Image">❮</button>
+        <div class="lightbox-img-box">
+          <img id="lightboxImg" src="red_jeep_4.jpg" alt="Red Jeep Expanded View">
+          <div class="lightbox-caption" id="lightboxCaption">Red Jeep</div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" title="Next Image">❯</button>
+      </div>
+    </div>
+
+
+
+    <!-- TECH SPECS MATRIX -->
+    <section class="specs-section" id="specs">
+      <div class="container">
+        <div class="section-title-wrap">
+          <h2 class="section-title">Assignment 01 Project Matrix</h2>
+          <p class="section-desc">Course delivery details and motion picture technical parameters.</p>
+        </div>
+
+        <table class="specs-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Assignment 01 Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Module Code & Title</td>
+              <td>SE3041: Digital Video Production and Delivery (Year 3, Semester 2, 2026)</td>
+            </tr>
+            <tr>
+              <td>Degree Program</td>
+              <td>BSc (Hons) in Information Technology Specializing in Interactive Media</td>
+            </tr>
+            <tr>
+              <td>Project Deliverable</td>
+              <td>Diorama Creation and 360° Object Motion Picture Presentation</td>
+            </tr>
+            <tr>
+              <td>360 Motion Sources</td>
+              <td>
+                • <code>Environment_3D.mp4</code> (3D Environment Diorama Turntable)<br>
+                • <code>Lego_minifigure.mp4</code> (Minifigure Turntable Capture)<br>
+                • <code>jeep1.mp4</code> (Lego Jeep 4x4 Expedition Vehicle)<br>
+                • <code>jeep2.mp4</code> (Red Trail Jeep Off-Road Crawler)
+              </td>
+            </tr>
+            <tr>
+              <td>Promo Video & Storyboard</td>
+              <td>
+                • <code>Wildness_Adventures.mp4</code> (Wildness Adventures Promo Video, 1080p Full HD, 34s)<br>
+                • <code>storyboard.jpg</code> (Wildness Adventures 9-Shot Production Storyboard Sheet, 43s Blueprint)
+              </td>
+            </tr>
+            <tr>
+              <td>Interactive Engine</td>
+              <td>HTML5 Canvas 2D + Exponential Smoothing Lerp Physics (60FPS Scrubbing)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Team Members & Work Contribution Table -->
+        <div class="section-title-wrap" style="margin-top: 70px; margin-bottom: 30px;">
+          <div class="badge-tag" style="margin: 0 auto 16px; width: fit-content;">
+            STUDENT CONTRIBUTIONS & WORK DISTRIBUTION
+          </div>
+          <h2 class="section-title" style="font-size: 2.2rem;">Project Team & Responsibilities</h2>
+          <p class="section-desc">Individual student contributions for SE3041 Diorama Creation & 360° Object Motion Picture Presentation.</p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="team-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">IT No</th>
+                <th style="width: 28%;">Name</th>
+                <th style="width: 50%;">Works</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="it-no"><code>IT23764170</code></td>
+                <td class="student-name">Augustine S.E</td>
+                <td class="works">Website & jungle camping environment diorama Build</td>
+              </tr>
+              <tr>
+                <td class="it-no"><code>IT23827844</code></td>
+                <td class="student-name">Fonseka W A T D</td>
+                <td class="works">Build Objects Jeeps, Camping net, Kayak boat + 360 degree capture</td>
+              </tr>
+              <tr>
+                <td class="it-no"><code>IT23675766</code></td>
+                <td class="student-name">Loshana.a</td>
+                <td class="works">Storyboard & Video</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container copyright-bar">
+      <span>© 2026 Camping 360° SE3041 Presentation Engine. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Engine -->
+  <script src="app.js?v=21.0"></script>
+</body>
+</html>
